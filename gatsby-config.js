@@ -1,3 +1,6 @@
+const path = require('path')
+
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -5,7 +8,18 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-typescript-checker`,
+    `gatsby-plugin-root-import`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        src: path.join(__dirname, 'src'),
+        pages: path.join(__dirname, 'src/pages'),
+        root: path.join(__dirname, '.')
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
